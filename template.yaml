@@ -16,11 +16,11 @@ Parameters:
     type: String
 
 Resources:
-  TwitterFunction:
+  GetTwitterFunction:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: twitter/
-      Handler: app.lambdaHandler
+      Handler: gettwitter.lambdaHandler
       Runtime: nodejs12.x
       Environment:
         Variables:
@@ -31,4 +31,20 @@ Resources:
           Type: Api 
           Properties:
             Path: /services/tweets
+            Method: get
+  ReTwitterFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: twitter/
+      Handler: retwitter.lambdaHandler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          twitterBearerToken: !Ref twitterBearerToken
+          twitterEndPoint: !Ref twitterEndPoint
+      Events:
+        HelloWorld:
+          Type: Api 
+          Properties:
+            Path: /services/retweet
             Method: get
