@@ -12,7 +12,7 @@ exports.lambdaHandler = async (event, context) => {
     /*
     * Call the async function to get the username id from twetter
     */
-    let dataUserName = await retriveDataFromAPI(`/users/by/username/${username}`);
+    let dataUserName = await retriveDataFromAPI(`/2/users/by/username/${username}`);
 
     /*
     * If the result has an error, then return 
@@ -25,7 +25,7 @@ exports.lambdaHandler = async (event, context) => {
         /*
         * Call the async function to get the tweets form the user id
         */
-        let dataTweets = await retriveDataFromAPI(`/users/${userId}/tweets`);
+        let dataTweets = await retriveDataFromAPI(`/2/users/${userId}/tweets`);
         
         // Object with the tweets results
         result = {
