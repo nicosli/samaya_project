@@ -32,14 +32,3 @@ Resources:
           Properties:
             Path: /services/tweets
             Method: get
-
-Outputs:
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  TwitterFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt TwitterFunction.Arn
-  TwitterFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt TwitterFunctionRole.Arn
